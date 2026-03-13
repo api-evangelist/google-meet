@@ -1,0 +1,73 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "meet": "https://meet.googleapis.com/v2/",
+    "goog": "https://developers.google.com/workspace/meet/api/reference/rest/v2/",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "provider": "schema:provider",
+    "Space": {
+      "@id": "goog:spaces",
+      "@context": {
+        "name": "schema:identifier",
+        "meetingUri": "schema:url",
+        "meetingCode": "schema:accessCode",
+        "config": "schema:accessMode"
+      }
+    },
+    "ConferenceRecord": {
+      "@id": "goog:conferenceRecords",
+      "@context": {
+        "name": "schema:identifier",
+        "startTime": "schema:startDate",
+        "endTime": "schema:endDate",
+        "expireTime": "schema:expires",
+        "space": "schema:location"
+      }
+    },
+    "Participant": {
+      "@id": "goog:conferenceRecords.participants",
+      "@context": {
+        "name": "schema:identifier",
+        "earliestStartTime": "schema:startDate",
+        "latestEndTime": "schema:endDate"
+      }
+    },
+    "Recording": {
+      "@id": "goog:conferenceRecords.recordings",
+      "@context": {
+        "name": "schema:identifier",
+        "state": "schema:creativeWorkStatus",
+        "startTime": "schema:startDate",
+        "endTime": "schema:endDate"
+      }
+    },
+    "Transcript": {
+      "@id": "goog:conferenceRecords.transcripts",
+      "@context": {
+        "name": "schema:identifier",
+        "state": "schema:creativeWorkStatus",
+        "startTime": "schema:startDate",
+        "endTime": "schema:endDate"
+      }
+    },
+    "TranscriptEntry": {
+      "@id": "goog:conferenceRecords.transcripts.entries",
+      "@context": {
+        "participant": "schema:agent",
+        "text": "schema:text",
+        "languageCode": "schema:inLanguage"
+      }
+    }
+  },
+  "@type": "WebAPI",
+  "name": "Google Meet API",
+  "description": "The Google Meet REST API enables creating and managing meeting spaces, conference records, recordings, and transcripts.",
+  "url": "https://developers.google.com/workspace/meet/api/guides/overview",
+  "provider": {
+    "@type": "Organization",
+    "name": "Google",
+    "url": "https://developers.google.com"
+  }
+}

@@ -1,0 +1,139 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://raw.githubusercontent.com/api-evangelist/google-meet/refs/heads/main/json-schema/json-schema.yml
+title: Google Meet API Schemas
+description: JSON Schema definitions for the Google Meet API resources.
+type: object
+$defs:
+  Space:
+    type: object
+    title: Meeting Space
+    description: A meeting space in Google Meet.
+    properties:
+      name:
+        type: string
+        description: Resource name of the space.
+      meetingUri:
+        type: string
+        format: uri
+        description: URI used to join the meeting.
+      meetingCode:
+        type: string
+        description: Code used to join the meeting.
+      config:
+        $ref: '#/$defs/SpaceConfig'
+      activeConference:
+        type: object
+        properties:
+          conferenceRecord:
+            type: string
+            description: Reference to the active conference record.
+  SpaceConfig:
+    type: object
+    title: Space Configuration
+    description: Configuration for a meeting space.
+    properties:
+      accessType:
+        type: string
+        description: Access type of the meeting space.
+        enum: [ACCESS_TYPE_UNSPECIFIED, OPEN, TRUSTED, RESTRICTED]
+      entryPointAccess:
+        type: string
+        description: Entry point access restriction.
+        enum: [ENTRY_POINT_ACCESS_UNSPECIFIED, ALL, CREATOR_APP_ONLY]
+  ConferenceRecord:
+    type: object
+    title: Conference Record
+    description: A record of a conference that took place.
+    properties:
+      name:
+        type: string
+        description: Resource name of the conference record.
+      startTime:
+        type: string
+        format: date-time
+        description: When the conference started.
+      endTime:
+        type: string
+        format: date-time
+        description: When the conference ended.
+      expireTime:
+        type: string
+        format: date-time
+        description: When the conference record expires.
+      space:
+        type: string
+        description: The space where the conference was held.
+  Participant:
+    type: object
+    title: Participant
+    description: A participant in a conference.
+    properties:
+      name:
+        type: string
+        description: Resource name of the participant.
+      earliestStartTime:
+        type: string
+        format: date-time
+        description: Earliest start time of the participant.
+      latestEndTime:
+        type: string
+        format: date-time
+        description: Latest end time of the participant.
+  Recording:
+    type: object
+    title: Recording
+    description: A recording from a conference.
+    properties:
+      name:
+        type: string
+        description: Resource name of the recording.
+      state:
+        type: string
+        description: Current state of the recording.
+        enum: [STATE_UNSPECIFIED, STARTED, ENDED, FILE_GENERATED]
+      startTime:
+        type: string
+        format: date-time
+      endTime:
+        type: string
+        format: date-time
+  Transcript:
+    type: object
+    title: Transcript
+    description: A transcript from a conference.
+    properties:
+      name:
+        type: string
+        description: Resource name of the transcript.
+      state:
+        type: string
+        description: Current state of the transcript.
+        enum: [STATE_UNSPECIFIED, STARTED, ENDED, FILE_GENERATED]
+      startTime:
+        type: string
+        format: date-time
+      endTime:
+        type: string
+        format: date-time
+  TranscriptEntry:
+    type: object
+    title: Transcript Entry
+    description: A single entry in a transcript.
+    properties:
+      name:
+        type: string
+      participant:
+        type: string
+        description: Resource name of the participant who spoke.
+      text:
+        type: string
+        description: The spoken text.
+      startTime:
+        type: string
+        format: date-time
+      endTime:
+        type: string
+        format: date-time
+      languageCode:
+        type: string
+        description: Language of the transcript entry.
