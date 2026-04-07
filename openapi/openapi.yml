@@ -15,7 +15,7 @@ paths:
   /v2/spaces:
     post:
       operationId: createSpace
-      summary: Create meeting space
+      summary: Google Meet Create meeting space
       description: Creates a new meeting space.
       requestBody:
         content:
@@ -32,7 +32,7 @@ paths:
   /v2/{name}:
     get:
       operationId: getSpace
-      summary: Get meeting space
+      summary: Google Meet Get meeting space
       description: Gets a meeting space by resource name.
       parameters:
         - name: name
@@ -50,7 +50,7 @@ paths:
                 $ref: '#/components/schemas/Space'
     patch:
       operationId: updateSpace
-      summary: Update meeting space
+      summary: Google Meet Update meeting space
       description: Updates a meeting space.
       parameters:
         - name: name
@@ -78,7 +78,7 @@ paths:
   /v2/{name}:endActiveConference:
     post:
       operationId: endActiveConference
-      summary: End active conference
+      summary: Google Meet End active conference
       description: Ends an active conference in a space.
       parameters:
         - name: name
@@ -93,7 +93,7 @@ paths:
   /v2/conferenceRecords:
     get:
       operationId: listConferenceRecords
-      summary: List conference records
+      summary: Google Meet List conference records
       description: Lists the conference records.
       parameters:
         - name: pageSize
@@ -118,7 +118,7 @@ paths:
   /v2/conferenceRecords/{conferenceRecordId}:
     get:
       operationId: getConferenceRecord
-      summary: Get conference record
+      summary: Google Meet Get conference record
       description: Gets a conference record by conference ID.
       parameters:
         - name: conferenceRecordId
@@ -136,7 +136,7 @@ paths:
   /v2/conferenceRecords/{conferenceRecordId}/participants:
     get:
       operationId: listParticipants
-      summary: List participants
+      summary: Google Meet List participants
       description: Lists the participants in a conference record.
       parameters:
         - name: conferenceRecordId
@@ -162,7 +162,7 @@ paths:
   /v2/conferenceRecords/{conferenceRecordId}/participants/{participantId}:
     get:
       operationId: getParticipant
-      summary: Get participant
+      summary: Google Meet Get participant
       description: Gets a participant by participant ID.
       parameters:
         - name: conferenceRecordId
@@ -185,7 +185,7 @@ paths:
   /v2/conferenceRecords/{conferenceRecordId}/recordings:
     get:
       operationId: listRecordings
-      summary: List recordings
+      summary: Google Meet List recordings
       description: Lists the recordings from a conference record.
       parameters:
         - name: conferenceRecordId
@@ -203,7 +203,7 @@ paths:
   /v2/conferenceRecords/{conferenceRecordId}/transcripts:
     get:
       operationId: listTranscripts
-      summary: List transcripts
+      summary: Google Meet List transcripts
       description: Lists the transcripts from a conference record.
       parameters:
         - name: conferenceRecordId
@@ -221,7 +221,7 @@ paths:
   /v2/conferenceRecords/{conferenceRecordId}/transcripts/{transcriptId}/entries:
     get:
       operationId: listTranscriptEntries
-      summary: List transcript entries
+      summary: Google Meet List transcript entries
       description: Lists the transcript entries from a transcript.
       parameters:
         - name: conferenceRecordId
