@@ -29,6 +29,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Space'
+      tags:
+        - Spaces
   /v2/{name}:
     get:
       operationId: getSpace
@@ -115,6 +117,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListConferenceRecordsResponse'
+      tags:
+        - conferenceRecords
   /v2/conferenceRecords/{conferenceRecordId}:
     get:
       operationId: getConferenceRecord
@@ -133,6 +137,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConferenceRecord'
+      tags:
+        - conferenceRecords
   /v2/conferenceRecords/{conferenceRecordId}/participants:
     get:
       operationId: listParticipants
@@ -159,6 +165,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListParticipantsResponse'
+      tags:
+        - conferenceRecords
   /v2/conferenceRecords/{conferenceRecordId}/participants/{participantId}:
     get:
       operationId: getParticipant
@@ -182,6 +190,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Participant'
+      tags:
+        - conferenceRecords
   /v2/conferenceRecords/{conferenceRecordId}/recordings:
     get:
       operationId: listRecordings
@@ -200,6 +210,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRecordingsResponse'
+      tags:
+        - conferenceRecords
   /v2/conferenceRecords/{conferenceRecordId}/transcripts:
     get:
       operationId: listTranscripts
@@ -218,6 +230,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTranscriptsResponse'
+      tags:
+        - conferenceRecords
   /v2/conferenceRecords/{conferenceRecordId}/transcripts/{transcriptId}/entries:
     get:
       operationId: listTranscriptEntries
@@ -241,6 +255,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTranscriptEntriesResponse'
+      tags:
+        - conferenceRecords
 components:
   schemas:
     Space:
@@ -385,3 +401,6 @@ components:
             $ref: '#/components/schemas/TranscriptEntry'
         nextPageToken:
           type: string
+tags:
+  - name: conferenceRecords
+  - name: Spaces

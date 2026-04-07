@@ -12,12 +12,12 @@ created: '2026-03-13'
 modified: '2026-03-13'
 specificationVersion: '0.18'
 tags:
-  - Video Conferencing
-  - Meetings
   - Google
   - Google Workspace
+  - Meetings
   - Recordings
   - Transcripts
+  - Video Conferencing
 apis:
   - name: Google Meet API
     description: >-
@@ -34,10 +34,10 @@ apis:
       - type: JSONLD
         url: json-ld/json-ld.jsonld
     tags:
-      - Video Conferencing
       - Meetings
       - Recordings
       - Transcripts
+      - Video Conferencing
 common:
   - type: GettingStarted
     url: https://developers.google.com/workspace/meet/api/guides/overview
