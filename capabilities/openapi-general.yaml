@@ -1,0 +1,164 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Meet API
+  description: 'Google Meet API. 3 operations. Lead operation: Google Meet Get meeting space. Self-contained Naftiko capability
+    covering one Google Meet business surface.'
+  tags:
+  - Google Meet
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_MEET_API_KEY: GOOGLE_MEET_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openapi-general
+    baseUri: https://meet.googleapis.com
+    description: Google Meet API business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-name
+      path: /v2/{name}
+      operations:
+      - name: getspace
+        method: GET
+        description: Google Meet Get meeting space
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: 'Format: spaces/{space}'
+          required: true
+      - name: updatespace
+        method: PATCH
+        description: Google Meet Update meeting space
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: 'Format: spaces/{space}'
+          required: true
+        - name: updateMask
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v2-name}:endActiveConference
+      path: /v2/{name}:endActiveConference
+      operations:
+      - name: endactiveconference
+        method: POST
+        description: Google Meet End active conference
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: 'Format: spaces/{space}'
+          required: true
+  exposes:
+  - type: rest
+    namespace: openapi-general-rest
+    port: 8080
+    description: REST adapter for Google Meet API. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2/{name}
+      name: v2-name
+      description: REST surface for v2-name.
+      operations:
+      - method: GET
+        name: getspace
+        description: Google Meet Get meeting space
+        call: openapi-general.getspace
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatespace
+        description: Google Meet Update meeting space
+        call: openapi-general.updatespace
+        with:
+          name: rest.name
+          updateMask: rest.updateMask
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/name-endactiveconference
+      name: v2-name-endactiveconference
+      description: REST surface for v2-name}:endActiveConference.
+      operations:
+      - method: POST
+        name: endactiveconference
+        description: Google Meet End active conference
+        call: openapi-general.endactiveconference
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openapi-general-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Meet API. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: google-meet-get-meeting-space
+      description: Google Meet Get meeting space
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-general.getspace
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-meet-update-meeting-space
+      description: Google Meet Update meeting space
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: openapi-general.updatespace
+      with:
+        name: tools.name
+        updateMask: tools.updateMask
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-meet-end-active-conference
+      description: Google Meet End active conference
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openapi-general.endactiveconference
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.

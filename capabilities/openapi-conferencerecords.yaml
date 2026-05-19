@@ -1,0 +1,353 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Meet API — conferenceRecords
+  description: 'Google Meet API — conferenceRecords. 7 operations. Lead operation: Google Meet List conference records. Self-contained
+    Naftiko capability covering one Google Meet business surface.'
+  tags:
+  - Google Meet
+  - conferenceRecords
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_MEET_API_KEY: GOOGLE_MEET_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openapi-conferencerecords
+    baseUri: https://meet.googleapis.com
+    description: Google Meet API — conferenceRecords business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-conferenceRecords
+      path: /v2/conferenceRecords
+      operations:
+      - name: listconferencerecords
+        method: GET
+        description: Google Meet List conference records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: pageSize
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+        - name: filter
+          in: query
+          type: string
+    - name: v2-conferenceRecords-conferenceRecordId
+      path: /v2/conferenceRecords/{conferenceRecordId}
+      operations:
+      - name: getconferencerecord
+        method: GET
+        description: Google Meet Get conference record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: conferenceRecordId
+          in: path
+          type: string
+          required: true
+    - name: v2-conferenceRecords-conferenceRecordId-participants
+      path: /v2/conferenceRecords/{conferenceRecordId}/participants
+      operations:
+      - name: listparticipants
+        method: GET
+        description: Google Meet List participants
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: conferenceRecordId
+          in: path
+          type: string
+          required: true
+        - name: pageSize
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+    - name: v2-conferenceRecords-conferenceRecordId-participants-participantId
+      path: /v2/conferenceRecords/{conferenceRecordId}/participants/{participantId}
+      operations:
+      - name: getparticipant
+        method: GET
+        description: Google Meet Get participant
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: conferenceRecordId
+          in: path
+          type: string
+          required: true
+        - name: participantId
+          in: path
+          type: string
+          required: true
+    - name: v2-conferenceRecords-conferenceRecordId-recordings
+      path: /v2/conferenceRecords/{conferenceRecordId}/recordings
+      operations:
+      - name: listrecordings
+        method: GET
+        description: Google Meet List recordings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: conferenceRecordId
+          in: path
+          type: string
+          required: true
+    - name: v2-conferenceRecords-conferenceRecordId-transcripts
+      path: /v2/conferenceRecords/{conferenceRecordId}/transcripts
+      operations:
+      - name: listtranscripts
+        method: GET
+        description: Google Meet List transcripts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: conferenceRecordId
+          in: path
+          type: string
+          required: true
+    - name: v2-conferenceRecords-conferenceRecordId-transcripts-transcriptId-entries
+      path: /v2/conferenceRecords/{conferenceRecordId}/transcripts/{transcriptId}/entries
+      operations:
+      - name: listtranscriptentries
+        method: GET
+        description: Google Meet List transcript entries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: conferenceRecordId
+          in: path
+          type: string
+          required: true
+        - name: transcriptId
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: openapi-conferencerecords-rest
+    port: 8080
+    description: REST adapter for Google Meet API — conferenceRecords. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/conferencerecords
+      name: v2-conferencerecords
+      description: REST surface for v2-conferenceRecords.
+      operations:
+      - method: GET
+        name: listconferencerecords
+        description: Google Meet List conference records
+        call: openapi-conferencerecords.listconferencerecords
+        with:
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+          filter: rest.filter
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/conferencerecords/{conferencerecordid}
+      name: v2-conferencerecords-conferencerecordid
+      description: REST surface for v2-conferenceRecords-conferenceRecordId.
+      operations:
+      - method: GET
+        name: getconferencerecord
+        description: Google Meet Get conference record
+        call: openapi-conferencerecords.getconferencerecord
+        with:
+          conferenceRecordId: rest.conferenceRecordId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/conferencerecords/{conferencerecordid}/participants
+      name: v2-conferencerecords-conferencerecordid-participants
+      description: REST surface for v2-conferenceRecords-conferenceRecordId-participants.
+      operations:
+      - method: GET
+        name: listparticipants
+        description: Google Meet List participants
+        call: openapi-conferencerecords.listparticipants
+        with:
+          conferenceRecordId: rest.conferenceRecordId
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/conferencerecords/{conferencerecordid}/participants/{participantid}
+      name: v2-conferencerecords-conferencerecordid-participants-participantid
+      description: REST surface for v2-conferenceRecords-conferenceRecordId-participants-participantId.
+      operations:
+      - method: GET
+        name: getparticipant
+        description: Google Meet Get participant
+        call: openapi-conferencerecords.getparticipant
+        with:
+          conferenceRecordId: rest.conferenceRecordId
+          participantId: rest.participantId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/conferencerecords/{conferencerecordid}/recordings
+      name: v2-conferencerecords-conferencerecordid-recordings
+      description: REST surface for v2-conferenceRecords-conferenceRecordId-recordings.
+      operations:
+      - method: GET
+        name: listrecordings
+        description: Google Meet List recordings
+        call: openapi-conferencerecords.listrecordings
+        with:
+          conferenceRecordId: rest.conferenceRecordId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/conferencerecords/{conferencerecordid}/transcripts
+      name: v2-conferencerecords-conferencerecordid-transcripts
+      description: REST surface for v2-conferenceRecords-conferenceRecordId-transcripts.
+      operations:
+      - method: GET
+        name: listtranscripts
+        description: Google Meet List transcripts
+        call: openapi-conferencerecords.listtranscripts
+        with:
+          conferenceRecordId: rest.conferenceRecordId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/conferencerecords/{conferencerecordid}/transcripts/{transcriptid}/entries
+      name: v2-conferencerecords-conferencerecordid-transcripts-transcriptid-entries
+      description: REST surface for v2-conferenceRecords-conferenceRecordId-transcripts-transcriptId-entries.
+      operations:
+      - method: GET
+        name: listtranscriptentries
+        description: Google Meet List transcript entries
+        call: openapi-conferencerecords.listtranscriptentries
+        with:
+          conferenceRecordId: rest.conferenceRecordId
+          transcriptId: rest.transcriptId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openapi-conferencerecords-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Meet API — conferenceRecords. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: google-meet-list-conference-records
+      description: Google Meet List conference records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-conferencerecords.listconferencerecords
+      with:
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+        filter: tools.filter
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-meet-get-conference-record
+      description: Google Meet Get conference record
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-conferencerecords.getconferencerecord
+      with:
+        conferenceRecordId: tools.conferenceRecordId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-meet-list-participants
+      description: Google Meet List participants
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-conferencerecords.listparticipants
+      with:
+        conferenceRecordId: tools.conferenceRecordId
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-meet-get-participant
+      description: Google Meet Get participant
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-conferencerecords.getparticipant
+      with:
+        conferenceRecordId: tools.conferenceRecordId
+        participantId: tools.participantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-meet-list-recordings
+      description: Google Meet List recordings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-conferencerecords.listrecordings
+      with:
+        conferenceRecordId: tools.conferenceRecordId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-meet-list-transcripts
+      description: Google Meet List transcripts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-conferencerecords.listtranscripts
+      with:
+        conferenceRecordId: tools.conferenceRecordId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-meet-list-transcript-entries
+      description: Google Meet List transcript entries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-conferencerecords.listtranscriptentries
+      with:
+        conferenceRecordId: tools.conferenceRecordId
+        transcriptId: tools.transcriptId
+      outputParameters:
+      - type: object
+        mapping: $.

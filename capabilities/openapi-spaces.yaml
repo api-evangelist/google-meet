@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Meet API — Spaces
+  description: 'Google Meet API — Spaces. 1 operations. Lead operation: Google Meet Create meeting space. Self-contained Naftiko
+    capability covering one Google Meet business surface.'
+  tags:
+  - Google Meet
+  - Spaces
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_MEET_API_KEY: GOOGLE_MEET_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openapi-spaces
+    baseUri: https://meet.googleapis.com
+    description: Google Meet API — Spaces business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-spaces
+      path: /v2/spaces
+      operations:
+      - name: createspace
+        method: POST
+        description: Google Meet Create meeting space
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: openapi-spaces-rest
+    port: 8080
+    description: REST adapter for Google Meet API — Spaces. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v2/spaces
+      name: v2-spaces
+      description: REST surface for v2-spaces.
+      operations:
+      - method: POST
+        name: createspace
+        description: Google Meet Create meeting space
+        call: openapi-spaces.createspace
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openapi-spaces-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Meet API — Spaces. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: google-meet-create-meeting-space
+      description: Google Meet Create meeting space
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openapi-spaces.createspace
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
