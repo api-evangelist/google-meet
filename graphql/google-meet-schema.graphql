@@ -1,0 +1,757 @@
+"""
+Google Meet GraphQL Schema
+Derived from the Google Meet REST API v2
+https://developers.google.com/meet/api/reference/rest/v2
+"""
+
+# ─────────────────────────────────────────────
+# Scalars
+# ─────────────────────────────────────────────
+
+scalar DateTime
+scalar JSON
+
+# ─────────────────────────────────────────────
+# Enums
+# ─────────────────────────────────────────────
+
+enum AccessType {
+  ACCESS_TYPE_UNSPECIFIED
+  OPEN
+  TRUSTED
+  RESTRICTED
+}
+
+enum EntryPointAccess {
+  ENTRY_POINT_ACCESS_UNSPECIFIED
+  ALL
+  CREATOR_APP_ONLY
+}
+
+enum RecordingState {
+  RECORDING_STATE_UNSPECIFIED
+  STARTED
+  PAUSED
+  ENDED
+  FILE_GENERATED
+}
+
+enum TranscriptState {
+  TRANSCRIPT_STATE_UNSPECIFIED
+  STARTED
+  PAUSED
+  ENDED
+  FILE_GENERATED
+}
+
+enum SessionStatus {
+  SESSION_STATUS_UNSPECIFIED
+  ACTIVE
+  INACTIVE
+}
+
+enum ArtifactType {
+  ARTIFACT_TYPE_UNSPECIFIED
+  RECORDING
+  TRANSCRIPT
+}
+
+enum LayoutType {
+  LAYOUT_TYPE_UNSPECIFIED
+  SPOTLIGHT
+  TILED
+  SIDEBAR
+  AUTO
+}
+
+enum DeviceType {
+  DEVICE_TYPE_UNSPECIFIED
+  DESKTOP
+  MOBILE
+  WEB
+  PHONE
+  CHROMEBOX
+  CAST
+}
+
+enum CameraState {
+  CAMERA_STATE_UNSPECIFIED
+  TURNED_ON
+  TURNED_OFF
+}
+
+enum MicrophoneState {
+  MICROPHONE_STATE_UNSPECIFIED
+  TURNED_ON
+  TURNED_OFF
+}
+
+enum ScreenShareState {
+  SCREEN_SHARE_STATE_UNSPECIFIED
+  ACTIVE
+  INACTIVE
+}
+
+enum GuestPolicy {
+  GUEST_POLICY_UNSPECIFIED
+  ALLOW_ALL
+  ALLOW_INVITED
+  DENY_ALL
+}
+
+enum ReservationStatus {
+  RESERVATION_STATUS_UNSPECIFIED
+  ACTIVE
+  EXPIRED
+  CANCELLED
+}
+
+enum OperationStatus {
+  PENDING
+  RUNNING
+  DONE
+  FAILED
+}
+
+# ─────────────────────────────────────────────
+# Space & Configuration Types
+# ─────────────────────────────────────────────
+
+"""A Google Meet meeting space that hosts video conferences."""
+type Space {
+  """Resource name of the space in the form spaces/{space}."""
+  name: String!
+  """The human-readable meeting code used to join the space."""
+  meetingCode: String!
+  """URI link to join the meeting."""
+  meetingUri: String!
+  """Active conference information if a conference is in progress."""
+  activeConference: ActiveConference
+  """Configuration settings for the space."""
+  config: SpaceConfig!
+}
+
+"""Configuration settings for a Meet space."""
+type SpaceConfig {
+  """Who can join the space without explicit invitation."""
+  accessType: AccessType!
+  """Controls which participants can join via entry points."""
+  entryPointAccess: EntryPointAccess!
+  """Guest policy controlling external participants."""
+  guestPolicy: GuestPolicy!
+  """Whether attendees are admitted automatically."""
+  moderationRestrictions: ModerationRestrictions
+}
+
+"""Restrictions applied by the meeting moderator."""
+type ModerationRestrictions {
+  """Whether chat is disabled for non-moderators."""
+  chatRestricted: Boolean!
+  """Whether non-moderators can share their screen."""
+  presentRestricted: Boolean!
+  """Whether reactions are disabled."""
+  reactionsRestricted: Boolean!
+}
+
+"""URI and code information for joining a space."""
+type SpaceUri {
+  """Human-readable meeting code."""
+  meetingCode: MeetingCode!
+  """Full URI to join the meeting."""
+  uri: String!
+}
+
+"""A meeting code used to join a Google Meet space."""
+type MeetingCode {
+  """The alphanumeric meeting code."""
+  value: String!
+}
+
+"""Information about an active conference running in a space."""
+type ActiveConference {
+  """Resource name of the active conference record."""
+  conferenceRecord: String!
+}
+
+# ─────────────────────────────────────────────
+# Conference Record Types
+# ─────────────────────────────────────────────
+
+"""An immutable record of a Google Meet conference."""
+type ConferenceRecord {
+  """Resource name in the form conferenceRecords/{conference_record}."""
+  name: String!
+  """Time when the conference started."""
+  startTime: DateTime!
+  """Time when the conference ended, if it has ended."""
+  endTime: DateTime
+  """Time when the meeting space was first created."""
+  expireTime: DateTime
+  """Resource name of the space this record belongs to."""
+  space: String!
+}
+
+"""A meeting held within a space (alias view for conference record)."""
+type Meeting {
+  """Resource name of the meeting record."""
+  name: String!
+  """Associated space resource name."""
+  space: String!
+  """Time the meeting started."""
+  startTime: DateTime!
+  """Time the meeting ended."""
+  endTime: DateTime
+  """All participants in this meeting."""
+  participants: [Participant!]!
+  """All recordings from this meeting."""
+  recordings: [Recording!]!
+  """All transcripts from this meeting."""
+  transcripts: [Transcript!]!
+}
+
+"""A single conference session (deprecated alias kept for compatibility)."""
+type Conference {
+  """Resource name."""
+  name: String!
+  """Parent space name."""
+  space: String!
+  """Conference start time."""
+  startTime: DateTime!
+  """Conference end time."""
+  endTime: DateTime
+}
+
+# ─────────────────────────────────────────────
+# Participant Types
+# ─────────────────────────────────────────────
+
+"""A participant in a Google Meet conference."""
+type Participant {
+  """Resource name in the form conferenceRecords/{record}/participants/{participant}."""
+  name: String!
+  """If the participant was a signed-in Google user."""
+  signedinUser: SignedinUser
+  """If the participant was anonymous."""
+  anonymousUser: AnonymousUser
+  """If the participant joined by phone."""
+  phoneUser: PhoneUser
+  """If the participant was a bot."""
+  botParticipant: BotParticipant
+  """Sessions associated with this participant."""
+  sessions: [ParticipantSession!]!
+  """Time of earliest session join."""
+  earliestStartTime: DateTime
+  """Time of latest session leave."""
+  latestEndTime: DateTime
+}
+
+"""A signed-in Google user participant."""
+type SignedinUser {
+  """Obfuscated Google user ID."""
+  user: String!
+  """Display name of the user."""
+  displayName: String!
+}
+
+"""An anonymous (unauthenticated) participant."""
+type AnonymousUser {
+  """Display name provided by the anonymous user."""
+  displayName: String!
+}
+
+"""A participant who joined via phone dial-in."""
+type PhoneUser {
+  """Masked phone number."""
+  displayName: String!
+}
+
+"""An automated bot participant."""
+type BotParticipant {
+  """Bot identifier."""
+  botName: String!
+}
+
+"""A phone participant detail."""
+type PhoneParticipant {
+  """Formatted phone number (masked)."""
+  displayName: String!
+}
+
+"""A single session (connection) by a participant."""
+type ParticipantSession {
+  """Resource name in the form conferenceRecords/{record}/participants/{participant}/participantSessions/{session}."""
+  name: String!
+  """Time the participant joined this session."""
+  startTime: DateTime!
+  """Time the participant left this session, or null if still active."""
+  endTime: DateTime
+  """Status of the session."""
+  status: SessionStatus!
+  """Device used in this session."""
+  device: Device
+}
+
+"""Time when a participant joined."""
+type JoinTime {
+  """RFC 3339 join timestamp."""
+  joinTime: DateTime!
+}
+
+"""Time when a participant left."""
+type LeaveTime {
+  """RFC 3339 leave timestamp."""
+  leaveTime: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Device Types
+# ─────────────────────────────────────────────
+
+"""Information about a participant's device."""
+type Device {
+  """Type of device used."""
+  deviceType: DeviceType!
+  """Camera status on this device."""
+  cameraStatus: CameraStatus!
+  """Microphone status on this device."""
+  microphoneStatus: MicrophoneStatus!
+  """Screen share status."""
+  screenShare: ScreenShare!
+  """Overall device status."""
+  deviceStatus: DeviceStatus!
+}
+
+"""Camera status for a device."""
+type CameraStatus {
+  """Current camera state."""
+  state: CameraState!
+}
+
+"""Microphone status for a device."""
+type MicrophoneStatus {
+  """Current microphone state."""
+  state: MicrophoneState!
+}
+
+"""Screen share status for a device."""
+type ScreenShare {
+  """Current screen share state."""
+  state: ScreenShareState!
+}
+
+"""General device health/connection status."""
+type DeviceStatus {
+  """Whether the device is currently connected."""
+  connected: Boolean!
+}
+
+# ─────────────────────────────────────────────
+# Recording Types
+# ─────────────────────────────────────────────
+
+"""A recording artifact from a Google Meet conference."""
+type Recording {
+  """Resource name in the form conferenceRecords/{record}/recordings/{recording}."""
+  name: String!
+  """Current state of the recording."""
+  state: RecordingState!
+  """Time the recording started."""
+  startTime: DateTime
+  """Time the recording ended."""
+  endTime: DateTime
+  """Drive file destination for the recording."""
+  driveDestination: DriveDestination
+}
+
+"""Destination information for a recording stored in Google Drive."""
+type DriveDestination {
+  """Drive file ID of the recording."""
+  file: String!
+  """Export URI to access the recording."""
+  exportUri: String!
+}
+
+"""Destination configuration for a recording (used in requests)."""
+type RecordingDestination {
+  """Target Drive folder ID."""
+  driveFolderId: String
+}
+
+# ─────────────────────────────────────────────
+# Transcript Types
+# ─────────────────────────────────────────────
+
+"""A transcript artifact from a Google Meet conference."""
+type Transcript {
+  """Resource name in the form conferenceRecords/{record}/transcripts/{transcript}."""
+  name: String!
+  """Current state of the transcript."""
+  state: TranscriptState!
+  """Time the transcript started."""
+  startTime: DateTime
+  """Time the transcript ended."""
+  endTime: DateTime
+  """Drive file destination for the transcript document."""
+  docsDestination: DocsDestination
+  """Individual transcript entries."""
+  entries: [TranscriptEntry!]!
+}
+
+"""Destination for a transcript document stored in Google Docs."""
+type DocsDestination {
+  """Google Docs document ID."""
+  document: String!
+  """Export URI for the document."""
+  exportUri: String!
+}
+
+"""Destination configuration for a transcript (used in requests)."""
+type TranscriptDestination {
+  """Target Drive folder ID."""
+  driveFolderId: String
+}
+
+"""A single timestamped entry in a meeting transcript."""
+type TranscriptEntry {
+  """Resource name."""
+  name: String!
+  """Participant who spoke this entry."""
+  participant: String!
+  """Text spoken in this entry."""
+  text: String!
+  """Language code of the transcribed speech."""
+  languageCode: String!
+  """Time when the speech in this entry started."""
+  startTime: DateTime!
+  """Time when the speech in this entry ended."""
+  endTime: DateTime!
+}
+
+"""A speaker reference within a transcript."""
+type Speaker {
+  """Participant resource name of the speaker."""
+  participant: String!
+  """Display name of the speaker."""
+  displayName: String!
+}
+
+"""An individual caption segment."""
+type Caption {
+  """Text of the caption."""
+  text: String!
+  """Language code."""
+  languageCode: String!
+  """Start time of the caption."""
+  startTime: DateTime!
+  """End time of the caption."""
+  endTime: DateTime!
+  """Speaker information."""
+  speaker: Speaker
+}
+
+# ─────────────────────────────────────────────
+# Layout & View Types
+# ─────────────────────────────────────────────
+
+"""Layout configuration for the meeting view."""
+type LayoutConfig {
+  """Type of layout to display."""
+  layoutType: LayoutType!
+  """Pinned participant configuration."""
+  pinned: Pinned
+  """Spotlight configuration."""
+  spotlight: Spotlight
+  """Auto layout configuration."""
+  autoLayout: AutoLayout
+  """Active speaker layout configuration."""
+  activeSpeaker: ActiveSpeaker
+}
+
+"""Configuration for pinning a participant's video."""
+type Pinned {
+  """Resource name of the pinned participant."""
+  participant: String!
+}
+
+"""Configuration for spotlighting a participant."""
+type Spotlight {
+  """Resource name of the spotlighted participant."""
+  participant: String!
+}
+
+"""Auto layout configuration."""
+type AutoLayout {
+  """Whether auto layout is enabled."""
+  enabled: Boolean!
+}
+
+"""Active speaker layout configuration."""
+type ActiveSpeaker {
+  """Whether active speaker highlighting is enabled."""
+  enabled: Boolean!
+}
+
+# ─────────────────────────────────────────────
+# Artifact & Config Types
+# ─────────────────────────────────────────────
+
+"""A Meet artifact (recording or transcript) reference."""
+type MeetArtifact {
+  """Resource name of the artifact."""
+  name: String!
+  """Type of the artifact."""
+  artifactType: ArtifactType!
+  """URI to access the artifact."""
+  uri: String!
+  """Time the artifact was created."""
+  createTime: DateTime!
+}
+
+"""Per-user meeting configuration preferences."""
+type UserMeetingConfig {
+  """User identifier."""
+  userId: String!
+  """Whether the user prefers to join muted."""
+  joinMuted: Boolean!
+  """Whether the user prefers to join with camera off."""
+  joinWithCameraOff: Boolean!
+  """Preferred layout configuration."""
+  layoutConfig: LayoutConfig
+}
+
+"""A reservation for a future Google Meet session."""
+type MeetReservation {
+  """Resource name of the reservation."""
+  name: String!
+  """Space this reservation is for."""
+  space: String!
+  """Status of the reservation."""
+  status: ReservationStatus!
+  """Scheduled start time."""
+  startTime: DateTime!
+  """Scheduled end time."""
+  endTime: DateTime!
+}
+
+"""General reservation object (alias)."""
+type Reservation {
+  """Resource name."""
+  name: String!
+  """Associated space."""
+  space: String!
+  """Reservation status."""
+  status: ReservationStatus!
+  """Start time."""
+  startTime: DateTime!
+  """End time."""
+  endTime: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Request / Input Types
+# ─────────────────────────────────────────────
+
+"""Input for creating a new meeting space."""
+input CreateSpaceRequest {
+  """Initial configuration for the space."""
+  config: SpaceConfigInput
+}
+
+"""Input for updating an existing meeting space."""
+input UpdateSpaceRequest {
+  """Resource name of the space to update."""
+  name: String!
+  """Fields to update on the space config."""
+  config: SpaceConfigInput
+  """Field mask specifying which fields to update."""
+  updateMask: String
+}
+
+"""Input for ending the active conference in a space."""
+input EndActiveConferenceRequest {
+  """Resource name of the space whose active conference should end."""
+  name: String!
+}
+
+"""Input configuration for a space."""
+input SpaceConfigInput {
+  """Who can join the space."""
+  accessType: AccessType
+  """Entry point access control."""
+  entryPointAccess: EntryPointAccess
+  """Guest policy."""
+  guestPolicy: GuestPolicy
+}
+
+# ─────────────────────────────────────────────
+# Auth & API Types
+# ─────────────────────────────────────────────
+
+"""Represents a long-running operation."""
+type Operation {
+  """Server-assigned operation name."""
+  name: String!
+  """Whether the operation is complete."""
+  done: Boolean!
+  """Status of the operation."""
+  status: OperationStatus!
+  """Error message if the operation failed."""
+  error: String
+  """JSON-encoded response when done and successful."""
+  response: JSON
+  """JSON-encoded operation metadata."""
+  metadata: JSON
+}
+
+"""An OAuth 2.0 access token used to authenticate API calls."""
+type Token {
+  """The token value."""
+  accessToken: String!
+  """Token type (typically 'Bearer')."""
+  tokenType: String!
+  """Seconds until the token expires."""
+  expiresIn: Int!
+  """Scopes granted to the token."""
+  scope: String!
+}
+
+"""An API key credential for server-to-server calls."""
+type APIKey {
+  """The API key string."""
+  key: String!
+  """Display name for the key."""
+  displayName: String
+  """Creation time of the key."""
+  createTime: DateTime
+}
+
+# ─────────────────────────────────────────────
+# Pagination
+# ─────────────────────────────────────────────
+
+"""Paginated list of spaces."""
+type SpaceConnection {
+  spaces: [Space!]!
+  nextPageToken: String
+}
+
+"""Paginated list of conference records."""
+type ConferenceRecordConnection {
+  conferenceRecords: [ConferenceRecord!]!
+  nextPageToken: String
+}
+
+"""Paginated list of participants."""
+type ParticipantConnection {
+  participants: [Participant!]!
+  nextPageToken: String
+}
+
+"""Paginated list of participant sessions."""
+type ParticipantSessionConnection {
+  participantSessions: [ParticipantSession!]!
+  nextPageToken: String
+}
+
+"""Paginated list of recordings."""
+type RecordingConnection {
+  recordings: [Recording!]!
+  nextPageToken: String
+}
+
+"""Paginated list of transcripts."""
+type TranscriptConnection {
+  transcripts: [Transcript!]!
+  nextPageToken: String
+}
+
+"""Paginated list of transcript entries."""
+type TranscriptEntryConnection {
+  transcriptEntries: [TranscriptEntry!]!
+  nextPageToken: String
+}
+
+# ─────────────────────────────────────────────
+# Root Query & Mutation
+# ─────────────────────────────────────────────
+
+type Query {
+  """Get a meeting space by resource name."""
+  space(name: String!): Space
+
+  """Get a meeting space by meeting code."""
+  spaceByMeetingCode(meetingCode: String!): Space
+
+  """List all conference records, optionally filtered."""
+  conferenceRecords(
+    filter: String
+    pageSize: Int
+    pageToken: String
+  ): ConferenceRecordConnection!
+
+  """Get a single conference record."""
+  conferenceRecord(name: String!): ConferenceRecord
+
+  """List participants for a conference record."""
+  participants(
+    parent: String!
+    filter: String
+    pageSize: Int
+    pageToken: String
+  ): ParticipantConnection!
+
+  """Get a single participant."""
+  participant(name: String!): Participant
+
+  """List sessions for a participant."""
+  participantSessions(
+    parent: String!
+    filter: String
+    pageSize: Int
+    pageToken: String
+  ): ParticipantSessionConnection!
+
+  """Get a single participant session."""
+  participantSession(name: String!): ParticipantSession
+
+  """List recordings for a conference record."""
+  recordings(
+    parent: String!
+    pageSize: Int
+    pageToken: String
+  ): RecordingConnection!
+
+  """Get a single recording."""
+  recording(name: String!): Recording
+
+  """List transcripts for a conference record."""
+  transcripts(
+    parent: String!
+    pageSize: Int
+    pageToken: String
+  ): TranscriptConnection!
+
+  """Get a single transcript."""
+  transcript(name: String!): Transcript
+
+  """List transcript entries for a transcript."""
+  transcriptEntries(
+    parent: String!
+    pageSize: Int
+    pageToken: String
+  ): TranscriptEntryConnection!
+
+  """Get a single transcript entry."""
+  transcriptEntry(name: String!): TranscriptEntry
+}
+
+type Mutation {
+  """Create a new meeting space."""
+  createSpace(input: CreateSpaceRequest): Space!
+
+  """Update an existing meeting space."""
+  updateSpace(input: UpdateSpaceRequest!): Space!
+
+  """End the active conference in a meeting space."""
+  endActiveConference(input: EndActiveConferenceRequest!): Boolean!
+}
