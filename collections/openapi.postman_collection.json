@@ -1,0 +1,1119 @@
+{
+  "item": [
+    {
+      "id": "771e09b0-95a6-41d8-bac4-49569e023424",
+      "name": "conferenceRecords",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "10b2376a-7da3-487b-aae2-1cb509948c19",
+          "name": "Google Meet List conference records",
+          "request": {
+            "name": "Google Meet List conference records",
+            "description": {
+              "content": "Lists the conference records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "conferenceRecords"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8475ad1-12a5-4c97-a882-0bfc51396340",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "conferenceRecords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conferenceRecords\": [\n    {\n      \"name\": \"string\",\n      \"startTime\": \"1988-04-29T01:21:15.272Z\",\n      \"endTime\": \"2020-10-07T13:17:31.119Z\",\n      \"expireTime\": \"1979-11-17T07:00:38.601Z\",\n      \"space\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"startTime\": \"1995-07-31T22:16:24.749Z\",\n      \"endTime\": \"1980-02-10T22:46:37.501Z\",\n      \"expireTime\": \"1998-03-21T10:56:30.801Z\",\n      \"space\": \"string\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "691c27d2-ff11-40cc-876a-b2d6ea87a07a",
+          "name": "Google Meet Get conference record",
+          "request": {
+            "name": "Google Meet Get conference record",
+            "description": {
+              "content": "Gets a conference record by conference ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "conferenceRecords",
+                ":conferenceRecordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "conferenceRecordId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3e3eedd-e822-4d7b-a1b7-b114631bc3de",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "conferenceRecords",
+                    ":conferenceRecordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conferenceRecordId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"startTime\": \"1951-11-06T06:56:12.875Z\",\n  \"endTime\": \"1978-07-16T01:28:59.699Z\",\n  \"expireTime\": \"1953-06-15T11:31:28.122Z\",\n  \"space\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cfa7573a-093c-457b-9c86-1943f4beae69",
+          "name": "Google Meet List participants",
+          "request": {
+            "name": "Google Meet List participants",
+            "description": {
+              "content": "Lists the participants in a conference record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "conferenceRecords",
+                ":conferenceRecordId",
+                "participants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "conferenceRecordId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "750795f3-847f-4cd0-a3e1-ba97ed6b39bf",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "conferenceRecords",
+                    ":conferenceRecordId",
+                    "participants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conferenceRecordId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"participants\": [\n    {\n      \"name\": \"string\",\n      \"earliestStartTime\": \"2009-07-12T02:20:02.771Z\",\n      \"latestEndTime\": \"1987-10-28T05:14:32.437Z\"\n    },\n    {\n      \"name\": \"string\",\n      \"earliestStartTime\": \"1996-08-10T22:52:10.009Z\",\n      \"latestEndTime\": \"1952-06-07T14:12:49.676Z\"\n    }\n  ],\n  \"nextPageToken\": \"string\",\n  \"totalSize\": 3948\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b485617-b41f-486b-b1f7-c96cc021c5e0",
+          "name": "Google Meet Get participant",
+          "request": {
+            "name": "Google Meet Get participant",
+            "description": {
+              "content": "Gets a participant by participant ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "conferenceRecords",
+                ":conferenceRecordId",
+                "participants",
+                ":participantId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "conferenceRecordId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "participantId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac8a6e05-0552-4bf0-9240-13dffc39d051",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "conferenceRecords",
+                    ":conferenceRecordId",
+                    "participants",
+                    ":participantId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conferenceRecordId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "participantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"earliestStartTime\": \"2007-03-02T01:56:41.725Z\",\n  \"latestEndTime\": \"2000-04-18T15:19:41.276Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d386eb7c-da61-41fe-b4c2-bc145cf21682",
+          "name": "Google Meet List recordings",
+          "request": {
+            "name": "Google Meet List recordings",
+            "description": {
+              "content": "Lists the recordings from a conference record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "conferenceRecords",
+                ":conferenceRecordId",
+                "recordings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "conferenceRecordId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91303144-11bc-4e76-aa37-6476a7dd2cb1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "conferenceRecords",
+                    ":conferenceRecordId",
+                    "recordings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conferenceRecordId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordings\": [\n    {\n      \"name\": \"string\",\n      \"state\": \"ENDED\",\n      \"startTime\": \"1960-10-19T18:02:18.119Z\",\n      \"endTime\": \"2019-04-20T13:56:20.229Z\"\n    },\n    {\n      \"name\": \"string\",\n      \"state\": \"ENDED\",\n      \"startTime\": \"1978-12-20T18:52:17.848Z\",\n      \"endTime\": \"2020-05-08T05:56:26.917Z\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "888baf25-e9ae-47e8-9e09-94f7b9f28660",
+          "name": "Google Meet List transcripts",
+          "request": {
+            "name": "Google Meet List transcripts",
+            "description": {
+              "content": "Lists the transcripts from a conference record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "conferenceRecords",
+                ":conferenceRecordId",
+                "transcripts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "conferenceRecordId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bacfe63b-6a90-4243-a539-d994d9e1aa69",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "conferenceRecords",
+                    ":conferenceRecordId",
+                    "transcripts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conferenceRecordId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transcripts\": [\n    {\n      \"name\": \"string\",\n      \"state\": \"FILE_GENERATED\",\n      \"startTime\": \"1956-07-09T12:03:19.237Z\",\n      \"endTime\": \"2024-12-18T14:56:00.650Z\"\n    },\n    {\n      \"name\": \"string\",\n      \"state\": \"STATE_UNSPECIFIED\",\n      \"startTime\": \"1953-01-28T07:13:22.480Z\",\n      \"endTime\": \"1980-02-19T20:47:56.845Z\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b43e47b-8402-460f-a6f4-a9e7c1e2f9ed",
+          "name": "Google Meet List transcript entries",
+          "request": {
+            "name": "Google Meet List transcript entries",
+            "description": {
+              "content": "Lists the transcript entries from a transcript.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "conferenceRecords",
+                ":conferenceRecordId",
+                "transcripts",
+                ":transcriptId",
+                "entries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "conferenceRecordId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transcriptId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac0292ec-6937-4d51-88ca-11e786cdeb99",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "conferenceRecords",
+                    ":conferenceRecordId",
+                    "transcripts",
+                    ":transcriptId",
+                    "entries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conferenceRecordId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transcriptId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transcriptEntries\": [\n    {\n      \"name\": \"string\",\n      \"participant\": \"string\",\n      \"text\": \"string\",\n      \"startTime\": \"1997-11-21T06:32:44.188Z\",\n      \"endTime\": \"1964-11-28T09:37:04.421Z\",\n      \"languageCode\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"participant\": \"string\",\n      \"text\": \"string\",\n      \"startTime\": \"2020-01-29T22:11:08.288Z\",\n      \"endTime\": \"2003-11-10T09:44:05.932Z\",\n      \"languageCode\": \"string\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6814b2af-06ed-40fd-bbcf-8ac375cb8c46",
+      "name": "Spaces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cb36d532-46fe-4c17-be23-f4e67c11f14d",
+          "name": "Google Meet Create meeting space",
+          "request": {
+            "name": "Google Meet Create meeting space",
+            "description": {
+              "content": "Creates a new meeting space.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "spaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"meetingUri\": \"<string>\",\n  \"meetingCode\": \"<string>\",\n  \"config\": {\n    \"accessType\": \"<string>\",\n    \"entryPointAccess\": \"<string>\"\n  },\n  \"activeConference\": {\n    \"conferenceRecord\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "02e8b079-02e3-44c6-b47c-f86a37fa4ff3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"meetingUri\": \"<string>\",\n  \"meetingCode\": \"<string>\",\n  \"config\": {\n    \"accessType\": \"<string>\",\n    \"entryPointAccess\": \"<string>\"\n  },\n  \"activeConference\": {\n    \"conferenceRecord\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"meetingUri\": \"string\",\n  \"meetingCode\": \"string\",\n  \"config\": {\n    \"accessType\": \"OPEN\",\n    \"entryPointAccess\": \"ALL\"\n  },\n  \"activeConference\": {\n    \"conferenceRecord\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "be20869c-52d0-4e41-ba5f-c88c81b90a17",
+      "name": "Google Meet Get meeting space",
+      "request": {
+        "name": "Google Meet Get meeting space",
+        "description": {
+          "content": "Gets a meeting space by resource name.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "v2",
+            ":name"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "name",
+              "description": "(Required) Format: spaces/{space}"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "3200d099-ff38-4878-9ac9-a2abfb8cb415",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Format: spaces/{space}"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"name\": \"string\",\n  \"meetingUri\": \"string\",\n  \"meetingCode\": \"string\",\n  \"config\": {\n    \"accessType\": \"OPEN\",\n    \"entryPointAccess\": \"ALL\"\n  },\n  \"activeConference\": {\n    \"conferenceRecord\": \"string\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "2331bdf2-ca51-4fb9-839c-94a798251287",
+      "name": "Google Meet Update meeting space",
+      "request": {
+        "name": "Google Meet Update meeting space",
+        "description": {
+          "content": "Updates a meeting space.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "v2",
+            ":name"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "updateMask",
+              "value": "<string>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "name",
+              "description": "(Required) Format: spaces/{space}"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "PATCH",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"<string>\",\n  \"meetingUri\": \"<string>\",\n  \"meetingCode\": \"<string>\",\n  \"config\": {\n    \"accessType\": \"<string>\",\n    \"entryPointAccess\": \"<string>\"\n  },\n  \"activeConference\": {\n    \"conferenceRecord\": \"<string>\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "d94a9664-b0bc-4bd2-b952-f98693331bfb",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "updateMask",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Format: spaces/{space}"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"meetingUri\": \"<string>\",\n  \"meetingCode\": \"<string>\",\n  \"config\": {\n    \"accessType\": \"<string>\",\n    \"entryPointAccess\": \"<string>\"\n  },\n  \"activeConference\": {\n    \"conferenceRecord\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"name\": \"string\",\n  \"meetingUri\": \"string\",\n  \"meetingCode\": \"string\",\n  \"config\": {\n    \"accessType\": \"OPEN\",\n    \"entryPointAccess\": \"ALL\"\n  },\n  \"activeConference\": {\n    \"conferenceRecord\": \"string\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "1afbbc5d-40c1-4fea-bb1f-c2638b0e4d6d",
+      "name": "Google Meet End active conference",
+      "request": {
+        "name": "Google Meet End active conference",
+        "description": {
+          "content": "Ends an active conference in a space.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "v2",
+            "{{name}}:endActiveConference"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "POST",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "a93adc47-b458-4caf-8c14-a742aaa9c32f",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                "{{name}}:endActiveConference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://meet.googleapis.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Format: spaces/{space}",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "name"
+    }
+  ],
+  "info": {
+    "_postman_id": "775b24c0-5f1b-4ab3-9017-6bba4e1433b7",
+    "name": "Google Meet API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Google Meet REST API enables creating and managing meeting spaces, retrieving conference records with participant and session details, and accessing meeting recordings and transcripts.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

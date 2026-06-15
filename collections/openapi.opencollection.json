@@ -1,0 +1,271 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Meet API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Spaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Meet Create meeting space",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://meet.googleapis.com/v2/spaces",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new meeting space."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Default",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Meet Get meeting space",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://meet.googleapis.com/v2/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Format: spaces/{space}"
+              }
+            ]
+          },
+          "docs": "Gets a meeting space by resource name."
+        },
+        {
+          "info": {
+            "name": "Google Meet Update meeting space",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://meet.googleapis.com/v2/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Format: spaces/{space}"
+              },
+              {
+                "name": "updateMask",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a meeting space."
+        },
+        {
+          "info": {
+            "name": "Google Meet End active conference",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://meet.googleapis.com/v2/:name:endActiveConference",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Format: spaces/{space}"
+              }
+            ]
+          },
+          "docs": "Ends an active conference in a space."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "conferenceRecords",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Meet List conference records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://meet.googleapis.com/v2/conferenceRecords",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the conference records."
+        },
+        {
+          "info": {
+            "name": "Google Meet Get conference record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://meet.googleapis.com/v2/conferenceRecords/:conferenceRecordId",
+            "params": [
+              {
+                "name": "conferenceRecordId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets a conference record by conference ID."
+        },
+        {
+          "info": {
+            "name": "Google Meet List participants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://meet.googleapis.com/v2/conferenceRecords/:conferenceRecordId/participants",
+            "params": [
+              {
+                "name": "conferenceRecordId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the participants in a conference record."
+        },
+        {
+          "info": {
+            "name": "Google Meet Get participant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://meet.googleapis.com/v2/conferenceRecords/:conferenceRecordId/participants/:participantId",
+            "params": [
+              {
+                "name": "conferenceRecordId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "participantId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets a participant by participant ID."
+        },
+        {
+          "info": {
+            "name": "Google Meet List recordings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://meet.googleapis.com/v2/conferenceRecords/:conferenceRecordId/recordings",
+            "params": [
+              {
+                "name": "conferenceRecordId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the recordings from a conference record."
+        },
+        {
+          "info": {
+            "name": "Google Meet List transcripts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://meet.googleapis.com/v2/conferenceRecords/:conferenceRecordId/transcripts",
+            "params": [
+              {
+                "name": "conferenceRecordId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the transcripts from a conference record."
+        },
+        {
+          "info": {
+            "name": "Google Meet List transcript entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://meet.googleapis.com/v2/conferenceRecords/:conferenceRecordId/transcripts/:transcriptId/entries",
+            "params": [
+              {
+                "name": "conferenceRecordId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transcriptId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the transcript entries from a transcript."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
