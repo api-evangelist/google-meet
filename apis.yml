@@ -38,12 +38,18 @@ apis:
   - Transcripts
   - Video Conferencing
 common:
+- type: VulnerabilityDisclosure
+  url: security/google-meet-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/google-meet-domain-security.yml
 - type: GettingStarted
   url: https://developers.google.com/workspace/meet/api/guides/overview
 - type: Pricing
   url: https://cloud.google.com/meet/pricing
 - type: JSONLD
   url: json-ld/json-ld.jsonld
+- url: https://workspaceupdates.googleblog.com/feeds/posts/default/-/Google%20Meet
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
