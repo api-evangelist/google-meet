@@ -1,0 +1,8 @@
+---
+title: "New user controls for Take notes for me"
+url: "https://workspaceupdates.googleblog.com/2026/02/new-user-controls-for-take-notes-for-me.html"
+date: "2026-02-19"
+author: "Paul Jiménez Vela"
+feed_url: "https://workspaceupdates.googleblog.com/feeds/posts/default/-/Google%20Meet"
+---
+Update (March 17, 2026): The rollout to Rapid Release domains now complete and the rollout to Scheduled Release domains has begun. We expect it to be complete within the next few days. We are introducing more ways meeting hosts and participants can view and control “Take notes for me” in Google Meet. When participants join a call in Google Meet, they are first directed to a green room. In the green room, participants now see a more prominent notice when “Take notes for me” is enabled for a meeting they are about to join. Additionally, eligible users can now turn off "Take notes for me" and transcription directly from the green room before joining a call that has yet to start. If the call has started, users can still stop or start notes at any time during the call. Getting started Admins: There is no admin control for this feature. End users: Visit the Help Center to learn more about Take notes for me in Google Meet. Rollout pace Rapid Release domains: Extended rollout (potentially longer than 15 days for feature visibility) starting on February 18, 2026 Scheduled Release domains: Full rollout (1–3 days for feature visibility) starting on March 17, 2026 Availability Business Standard and Plus Enterprise Standard and Plus Google AI Pro for Education Frontline Plus Resources Google Help: Take notes for me in Google Meet Google Help: Connect your video and audio
