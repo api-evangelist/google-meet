@@ -38,6 +38,8 @@ apis:
   - Transcripts
   - Video Conferencing
 common:
+- type: AgenticAccess
+  url: agentic-access/google-meet-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/google-meet-vulnerability-disclosure.yml
 - type: DomainSecurity
