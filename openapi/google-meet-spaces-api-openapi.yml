@@ -1,0 +1,64 @@
+openapi: 3.1.0
+info:
+  title: Google Meet conferenceRecords Spaces API
+  description: The Google Meet REST API enables creating and managing meeting spaces, retrieving conference records with participant and session details, and accessing meeting recordings and transcripts.
+  version: v2
+  contact:
+    name: Google
+    url: https://developers.google.com/workspace/meet/api/guides/overview
+servers:
+- url: https://meet.googleapis.com
+tags:
+- name: Spaces
+paths:
+  /v2/spaces:
+    post:
+      operationId: createSpace
+      summary: Google Meet Create meeting space
+      description: Creates a new meeting space.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Space'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Space'
+      tags:
+      - Spaces
+components:
+  schemas:
+    Space:
+      type: object
+      properties:
+        name:
+          type: string
+        meetingUri:
+          type: string
+        meetingCode:
+          type: string
+        config:
+          type: object
+          properties:
+            accessType:
+              type: string
+              enum:
+              - ACCESS_TYPE_UNSPECIFIED
+              - OPEN
+              - TRUSTED
+              - RESTRICTED
+            entryPointAccess:
+              type: string
+              enum:
+              - ENTRY_POINT_ACCESS_UNSPECIFIED
+              - ALL
+              - CREATOR_APP_ONLY
+        activeConference:
+          type: object
+          properties:
+            conferenceRecord:
+              type: string

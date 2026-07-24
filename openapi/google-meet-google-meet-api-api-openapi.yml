@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  title: Google Meet conferenceRecords Google Meet API API
+  description: The Google Meet REST API enables creating and managing meeting spaces, retrieving conference records with participant and session details, and accessing meeting recordings and transcripts.
+  version: v2
+  contact:
+    name: Google
+    url: https://developers.google.com/workspace/meet/api/guides/overview
+servers:
+- url: https://meet.googleapis.com
+tags:
+- name: Google Meet API
+paths:
+  /v2/{name}:
+    get:
+      operationId: getSpace
+      summary: Google Meet Get meeting space
+      description: Gets a meeting space by resource name.
+      parameters:
+      - name: name
+        in: path
+        required: true
+        description: 'Format: spaces/{space}'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Space'
+      tags:
+      - Google Meet API
+    patch:
+      operationId: updateSpace
+      summary: Google Meet Update meeting space
+      description: Updates a meeting space.
+      parameters:
+      - name: name
+        in: path
+        required: true
+        description: 'Format: spaces/{space}'
+        schema:
+          type: string
+      - name: updateMask
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Space'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Space'
+      tags:
+      - Google Meet API
+  /v2/{name}:endActiveConference:
+    post:
+      operationId: endActiveConference
+      summary: Google Meet End active conference
+      description: Ends an active conference in a space.
+      parameters:
+      - name: name
+        in: path
+        required: true
+        description: 'Format: spaces/{space}'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Google Meet API
+components:
+  schemas:
+    Space:
+      type: object
+      properties:
+        name:
+          type: string
+        meetingUri:
+          type: string
+        meetingCode:
+          type: string
+        config:
+          type: object
+          properties:
+            accessType:
+              type: string
+              enum:
+              - ACCESS_TYPE_UNSPECIFIED
+              - OPEN
+              - TRUSTED
+              - RESTRICTED
+            entryPointAccess:
+              type: string
+              enum:
+              - ENTRY_POINT_ACCESS_UNSPECIFIED
+              - ALL
+              - CREATOR_APP_ONLY
+        activeConference:
+          type: object
+          properties:
+            conferenceRecord:
+              type: string

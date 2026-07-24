@@ -1,0 +1,307 @@
+openapi: 3.1.0
+info:
+  title: Google Meet conferenceRecords API
+  description: The Google Meet REST API enables creating and managing meeting spaces, retrieving conference records with participant and session details, and accessing meeting recordings and transcripts.
+  version: v2
+  contact:
+    name: Google
+    url: https://developers.google.com/workspace/meet/api/guides/overview
+servers:
+- url: https://meet.googleapis.com
+tags:
+- name: conferenceRecords
+paths:
+  /v2/conferenceRecords:
+    get:
+      operationId: listConferenceRecords
+      summary: Google Meet List conference records
+      description: Lists the conference records.
+      parameters:
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
+      - name: filter
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConferenceRecordsResponse'
+      tags:
+      - conferenceRecords
+  /v2/conferenceRecords/{conferenceRecordId}:
+    get:
+      operationId: getConferenceRecord
+      summary: Google Meet Get conference record
+      description: Gets a conference record by conference ID.
+      parameters:
+      - name: conferenceRecordId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConferenceRecord'
+      tags:
+      - conferenceRecords
+  /v2/conferenceRecords/{conferenceRecordId}/participants:
+    get:
+      operationId: listParticipants
+      summary: Google Meet List participants
+      description: Lists the participants in a conference record.
+      parameters:
+      - name: conferenceRecordId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListParticipantsResponse'
+      tags:
+      - conferenceRecords
+  /v2/conferenceRecords/{conferenceRecordId}/participants/{participantId}:
+    get:
+      operationId: getParticipant
+      summary: Google Meet Get participant
+      description: Gets a participant by participant ID.
+      parameters:
+      - name: conferenceRecordId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: participantId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Participant'
+      tags:
+      - conferenceRecords
+  /v2/conferenceRecords/{conferenceRecordId}/recordings:
+    get:
+      operationId: listRecordings
+      summary: Google Meet List recordings
+      description: Lists the recordings from a conference record.
+      parameters:
+      - name: conferenceRecordId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRecordingsResponse'
+      tags:
+      - conferenceRecords
+  /v2/conferenceRecords/{conferenceRecordId}/transcripts:
+    get:
+      operationId: listTranscripts
+      summary: Google Meet List transcripts
+      description: Lists the transcripts from a conference record.
+      parameters:
+      - name: conferenceRecordId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTranscriptsResponse'
+      tags:
+      - conferenceRecords
+  /v2/conferenceRecords/{conferenceRecordId}/transcripts/{transcriptId}/entries:
+    get:
+      operationId: listTranscriptEntries
+      summary: Google Meet List transcript entries
+      description: Lists the transcript entries from a transcript.
+      parameters:
+      - name: conferenceRecordId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: transcriptId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTranscriptEntriesResponse'
+      tags:
+      - conferenceRecords
+components:
+  schemas:
+    ConferenceRecord:
+      type: object
+      properties:
+        name:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        expireTime:
+          type: string
+          format: date-time
+        space:
+          type: string
+    ListRecordingsResponse:
+      type: object
+      properties:
+        recordings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recording'
+        nextPageToken:
+          type: string
+    Recording:
+      type: object
+      properties:
+        name:
+          type: string
+        state:
+          type: string
+          enum:
+          - STATE_UNSPECIFIED
+          - STARTED
+          - ENDED
+          - FILE_GENERATED
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    ListParticipantsResponse:
+      type: object
+      properties:
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Participant'
+        nextPageToken:
+          type: string
+        totalSize:
+          type: integer
+    TranscriptEntry:
+      type: object
+      properties:
+        name:
+          type: string
+        participant:
+          type: string
+        text:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        languageCode:
+          type: string
+    ListConferenceRecordsResponse:
+      type: object
+      properties:
+        conferenceRecords:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConferenceRecord'
+        nextPageToken:
+          type: string
+    ListTranscriptsResponse:
+      type: object
+      properties:
+        transcripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transcript'
+        nextPageToken:
+          type: string
+    Transcript:
+      type: object
+      properties:
+        name:
+          type: string
+        state:
+          type: string
+          enum:
+          - STATE_UNSPECIFIED
+          - STARTED
+          - ENDED
+          - FILE_GENERATED
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    Participant:
+      type: object
+      properties:
+        name:
+          type: string
+        earliestStartTime:
+          type: string
+          format: date-time
+        latestEndTime:
+          type: string
+          format: date-time
+    ListTranscriptEntriesResponse:
+      type: object
+      properties:
+        transcriptEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranscriptEntry'
+        nextPageToken:
+          type: string
