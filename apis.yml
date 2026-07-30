@@ -4,7 +4,19 @@ description: The Google Meet API provides programmatic access to Google Meet vid
   spaces, retrieve conference records including participant details, access recordings
   and transcripts, and end active conferences. The API supports building integrations
   that automate meeting workflows and extract meeting data.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-meet.png
 url: https://raw.githubusercontent.com/api-evangelist/google-meet/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
@@ -17,26 +29,54 @@ tags:
 - Transcripts
 - Video Conferencing
 apis:
-- name: Google Meet API
-  description: The Google Meet REST API enables creating and managing meeting spaces,
-    retrieving conference records with participant and session data, accessing meeting
-    recordings and transcripts, and controlling active conferences.
+- aid: google-meet:google-meet-conferencerecords-api
+  name: Google Meet conferenceRecords API
+  description: The conferenceRecords API from Google Meet — 7 operation(s) for conferencerecords.
   humanURL: https://developers.google.com/workspace/meet/api/guides/overview
   baseURL: https://meet.googleapis.com
+  tags:
+  - conferenceRecords
   properties:
   - type: OpenAPI
-    url: openapi/openapi.yml
+    url: openapi/google-meet-conferencerecords-api-openapi.yml
   - type: JSONSchema
     url: json-schema/json-schema.yml
   - type: JSONLD
     url: json-ld/json-ld.jsonld
-  - url: graphql/google-meet-graphql.md
-    type: GraphQL
+  - type: GraphQL
+    url: graphql/google-meet-graphql.md
+- aid: google-meet:google-meet-google-meet-api-api
+  name: Google Meet Google Meet API API
+  description: The Google Meet API API from Google Meet — 2 operation(s) for google meet api.
+  humanURL: https://developers.google.com/workspace/meet/api/guides/overview
+  baseURL: https://meet.googleapis.com
   tags:
-  - Meetings
-  - Recordings
-  - Transcripts
-  - Video Conferencing
+  - Google Meet API
+  properties:
+  - type: OpenAPI
+    url: openapi/google-meet-google-meet-api-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/json-schema.yml
+  - type: JSONLD
+    url: json-ld/json-ld.jsonld
+  - type: GraphQL
+    url: graphql/google-meet-graphql.md
+- aid: google-meet:google-meet-spaces-api
+  name: Google Meet Spaces API
+  description: The Spaces API from Google Meet — 1 operation(s) for spaces.
+  humanURL: https://developers.google.com/workspace/meet/api/guides/overview
+  baseURL: https://meet.googleapis.com
+  tags:
+  - Spaces
+  properties:
+  - type: OpenAPI
+    url: openapi/google-meet-spaces-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/json-schema.yml
+  - type: JSONLD
+    url: json-ld/json-ld.jsonld
+  - type: GraphQL
+    url: graphql/google-meet-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/google-meet-agentic-access.yml
