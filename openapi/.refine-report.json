@@ -1,0 +1,18 @@
+{
+  "provider": "google-meet",
+  "sources": [
+    "google-meet-conferencerecords-api-openapi.yml",
+    "google-meet-google-meet-api-api-openapi.yml",
+    "google-meet-spaces-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-meet-conferencerecords-api-openapi.yml",
+    "google-meet-google-meet-api-api-openapi.yml",
+    "google-meet-spaces-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
