@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Meet conferenceRecords Spaces API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Spaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Meet Create meeting space",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://meet.googleapis.com/v2/spaces",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new meeting space."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

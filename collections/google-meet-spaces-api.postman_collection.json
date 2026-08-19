@@ -1,0 +1,125 @@
+{
+  "item": [
+    {
+      "id": "f0a698c8-a69f-485f-b8b0-172effe248fd",
+      "name": "Spaces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6c914bbe-2575-4645-b5d2-91852124f11d",
+          "name": "Google Meet Create meeting space",
+          "request": {
+            "name": "Google Meet Create meeting space",
+            "description": {
+              "content": "Creates a new meeting space.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "spaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"meetingUri\": \"<string>\",\n  \"meetingCode\": \"<string>\",\n  \"config\": {\n    \"accessType\": \"<string>\",\n    \"entryPointAccess\": \"<string>\"\n  },\n  \"activeConference\": {\n    \"conferenceRecord\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0cb9701a-15c1-417b-a2c4-b2d6d419ccc5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"meetingUri\": \"<string>\",\n  \"meetingCode\": \"<string>\",\n  \"config\": {\n    \"accessType\": \"<string>\",\n    \"entryPointAccess\": \"<string>\"\n  },\n  \"activeConference\": {\n    \"conferenceRecord\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"meetingUri\": \"string\",\n  \"meetingCode\": \"string\",\n  \"config\": {\n    \"accessType\": \"RESTRICTED\",\n    \"entryPointAccess\": \"CREATOR_APP_ONLY\"\n  },\n  \"activeConference\": {\n    \"conferenceRecord\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://meet.googleapis.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d24ab595-e842-445f-9c56-307de6c28cee",
+    "name": "Google Meet conferenceRecords Spaces API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Google Meet REST API enables creating and managing meeting spaces, retrieving conference records with participant and session details, and accessing meeting recordings and transcripts.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

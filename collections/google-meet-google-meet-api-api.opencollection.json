@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Meet conferenceRecords Google Meet API API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Google Meet API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Meet Get meeting space",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://meet.googleapis.com/v2/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Format: spaces/{space}"
+              }
+            ]
+          },
+          "docs": "Gets a meeting space by resource name."
+        },
+        {
+          "info": {
+            "name": "Google Meet Update meeting space",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://meet.googleapis.com/v2/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Format: spaces/{space}"
+              },
+              {
+                "name": "updateMask",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a meeting space."
+        },
+        {
+          "info": {
+            "name": "Google Meet End active conference",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://meet.googleapis.com/v2/:name:endActiveConference",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Format: spaces/{space}"
+              }
+            ]
+          },
+          "docs": "Ends an active conference in a space."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
