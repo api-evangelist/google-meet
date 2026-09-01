@@ -46,7 +46,8 @@ apis:
   description: The conferenceRecords API from Google Meet — 7 operation(s) for conferencerecords.
   humanURL: https://developers.google.com/workspace/meet/api/guides/overview
   baseURL: https://meet.googleapis.com
-  tags: []
+  tags:
+  - Conference Records
   tags_raw:
   - conferenceRecords
   properties:
