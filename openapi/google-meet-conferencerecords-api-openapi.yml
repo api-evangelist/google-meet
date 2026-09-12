@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Google Meet conferenceRecords API
+  title: Google Meet Conference Records API
   description: The Google Meet REST API enables creating and managing meeting spaces, retrieving conference records with participant and session details, and accessing meeting recordings and transcripts.
   version: v2
   contact:
@@ -178,93 +178,13 @@ paths:
       - conferenceRecords
 components:
   schemas:
-    ConferenceRecord:
+    ListTranscriptEntriesResponse:
       type: object
       properties:
-        name:
-          type: string
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        expireTime:
-          type: string
-          format: date-time
-        space:
-          type: string
-    ListRecordingsResponse:
-      type: object
-      properties:
-        recordings:
+        transcriptEntries:
           type: array
           items:
-            $ref: '#/components/schemas/Recording'
-        nextPageToken:
-          type: string
-    Recording:
-      type: object
-      properties:
-        name:
-          type: string
-        state:
-          type: string
-          enum:
-          - STATE_UNSPECIFIED
-          - STARTED
-          - ENDED
-          - FILE_GENERATED
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-    ListParticipantsResponse:
-      type: object
-      properties:
-        participants:
-          type: array
-          items:
-            $ref: '#/components/schemas/Participant'
-        nextPageToken:
-          type: string
-        totalSize:
-          type: integer
-    TranscriptEntry:
-      type: object
-      properties:
-        name:
-          type: string
-        participant:
-          type: string
-        text:
-          type: string
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        languageCode:
-          type: string
-    ListConferenceRecordsResponse:
-      type: object
-      properties:
-        conferenceRecords:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConferenceRecord'
-        nextPageToken:
-          type: string
-    ListTranscriptsResponse:
-      type: object
-      properties:
-        transcripts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Transcript'
+            $ref: '#/components/schemas/TranscriptEntry'
         nextPageToken:
           type: string
     Transcript:
@@ -296,12 +216,92 @@ components:
         latestEndTime:
           type: string
           format: date-time
-    ListTranscriptEntriesResponse:
+    ListTranscriptsResponse:
       type: object
       properties:
-        transcriptEntries:
+        transcripts:
           type: array
           items:
-            $ref: '#/components/schemas/TranscriptEntry'
+            $ref: '#/components/schemas/Transcript'
+        nextPageToken:
+          type: string
+    ListConferenceRecordsResponse:
+      type: object
+      properties:
+        conferenceRecords:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConferenceRecord'
+        nextPageToken:
+          type: string
+    Recording:
+      type: object
+      properties:
+        name:
+          type: string
+        state:
+          type: string
+          enum:
+          - STATE_UNSPECIFIED
+          - STARTED
+          - ENDED
+          - FILE_GENERATED
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    ConferenceRecord:
+      type: object
+      properties:
+        name:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        expireTime:
+          type: string
+          format: date-time
+        space:
+          type: string
+    TranscriptEntry:
+      type: object
+      properties:
+        name:
+          type: string
+        participant:
+          type: string
+        text:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        languageCode:
+          type: string
+    ListParticipantsResponse:
+      type: object
+      properties:
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Participant'
+        nextPageToken:
+          type: string
+        totalSize:
+          type: integer
+    ListRecordingsResponse:
+      type: object
+      properties:
+        recordings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recording'
         nextPageToken:
           type: string
