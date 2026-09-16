@@ -1,8 +1,7 @@
 name: Google Meet
-description: The Google Meet API provides programmatic access to Google Meet video
-  conferencing functionality. It enables applications to create and manage meeting
-  spaces, retrieve conference records including participant details, access recordings
-  and transcripts, and end active conferences. The API supports building integrations
+description: The Google Meet API provides programmatic access to Google Meet video conferencing functionality.
+  It enables applications to create and manage meeting spaces, retrieve conference records including participant
+  details, access recordings and transcripts, and end active conferences. The API supports building integrations
   that automate meeting workflows and extract meeting data.
 deliveryModel:
   model: saas
@@ -31,7 +30,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-meet.png
 url: https://raw.githubusercontent.com/api-evangelist/google-meet/refs/heads/main/apis.yml
 created: '2026-03-13'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 tags:
 - Google
@@ -60,7 +59,7 @@ apis:
   - type: GraphQL
     url: graphql/google-meet-graphql.md
 - aid: google-meet:google-meet-google-meet-api-api
-  name: Google Meet Google Meet API API
+  name: Google Meet Google Meet API
   description: The Google Meet API API from Google Meet — 2 operation(s) for google meet api.
   humanURL: https://developers.google.com/workspace/meet/api/guides/overview
   baseURL: https://meet.googleapis.com
