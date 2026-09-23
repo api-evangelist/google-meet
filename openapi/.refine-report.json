@@ -1,23 +1,31 @@
 {
   "provider": "google-meet",
   "sources": [
-    "google-meet-conferencerecords-api-openapi.yml",
-    "google-meet-google-meet-api-api-openapi.yml",
-    "google-meet-spaces-api-openapi.yml"
+    "_original/openapi.yml"
   ],
   "outputs": [
-    "google-meet-conferencerecords-api-openapi.yml",
     "google-meet-google-meet-api-api-openapi.yml",
-    "google-meet-spaces-api-openapi.yml"
+    "google-meet-spaces-api-openapi.yml",
+    "google-meet-conferencerecords-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "google-meet-conferencerecords-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-meet-google-meet-api-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-meet-spaces-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "openapi.yml: tagged paths GET /v2/{name} -> Google Meet API",
+    "openapi.yml: tagged paths PATCH /v2/{name} -> Google Meet API",
+    "openapi.yml: tagged paths POST /v2/{name}:endActiveConference -> Google Meet API",
+    "openapi.yml: declared missing tag: Google Meet API",
+    "superseded outputs removed: google-meet-conference-records-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 3 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "google-meet-conference-records-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-meet-google-meet-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-meet-spaces-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

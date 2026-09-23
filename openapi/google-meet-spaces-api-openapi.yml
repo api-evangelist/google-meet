@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Meet conferenceRecords Spaces API
+  title: Google Meet Spaces API
   description: The Google Meet REST API enables creating and managing meeting spaces, retrieving conference records with participant and session details, and accessing meeting recordings and transcripts.
   version: v2
   contact:

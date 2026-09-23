@@ -9,7 +9,7 @@ info:
 servers:
 - url: https://meet.googleapis.com
 tags:
-- name: conferenceRecords
+- name: Conference Records
 paths:
   /v2/conferenceRecords:
     get:
@@ -37,7 +37,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListConferenceRecordsResponse'
       tags:
-      - conferenceRecords
+      - Conference Records
   /v2/conferenceRecords/{conferenceRecordId}:
     get:
       operationId: getConferenceRecord
@@ -57,7 +57,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ConferenceRecord'
       tags:
-      - conferenceRecords
+      - Conference Records
   /v2/conferenceRecords/{conferenceRecordId}/participants:
     get:
       operationId: listParticipants
@@ -85,7 +85,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListParticipantsResponse'
       tags:
-      - conferenceRecords
+      - Conference Records
   /v2/conferenceRecords/{conferenceRecordId}/participants/{participantId}:
     get:
       operationId: getParticipant
@@ -110,7 +110,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Participant'
       tags:
-      - conferenceRecords
+      - Conference Records
   /v2/conferenceRecords/{conferenceRecordId}/recordings:
     get:
       operationId: listRecordings
@@ -130,7 +130,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListRecordingsResponse'
       tags:
-      - conferenceRecords
+      - Conference Records
   /v2/conferenceRecords/{conferenceRecordId}/transcripts:
     get:
       operationId: listTranscripts
@@ -150,7 +150,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListTranscriptsResponse'
       tags:
-      - conferenceRecords
+      - Conference Records
   /v2/conferenceRecords/{conferenceRecordId}/transcripts/{transcriptId}/entries:
     get:
       operationId: listTranscriptEntries
@@ -175,47 +175,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListTranscriptEntriesResponse'
       tags:
-      - conferenceRecords
+      - Conference Records
 components:
   schemas:
-    ListTranscriptEntriesResponse:
-      type: object
-      properties:
-        transcriptEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/TranscriptEntry'
-        nextPageToken:
-          type: string
-    Transcript:
-      type: object
-      properties:
-        name:
-          type: string
-        state:
-          type: string
-          enum:
-          - STATE_UNSPECIFIED
-          - STARTED
-          - ENDED
-          - FILE_GENERATED
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-    Participant:
-      type: object
-      properties:
-        name:
-          type: string
-        earliestStartTime:
-          type: string
-          format: date-time
-        latestEndTime:
-          type: string
-          format: date-time
     ListTranscriptsResponse:
       type: object
       properties:
@@ -225,14 +187,22 @@ components:
             $ref: '#/components/schemas/Transcript'
         nextPageToken:
           type: string
-    ListConferenceRecordsResponse:
+    TranscriptEntry:
       type: object
       properties:
-        conferenceRecords:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConferenceRecord'
-        nextPageToken:
+        name:
+          type: string
+        participant:
+          type: string
+        text:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        languageCode:
           type: string
     Recording:
       type: object
@@ -252,6 +222,64 @@ components:
         endTime:
           type: string
           format: date-time
+    Transcript:
+      type: object
+      properties:
+        name:
+          type: string
+        state:
+          type: string
+          enum:
+          - STATE_UNSPECIFIED
+          - STARTED
+          - ENDED
+          - FILE_GENERATED
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    ListConferenceRecordsResponse:
+      type: object
+      properties:
+        conferenceRecords:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConferenceRecord'
+        nextPageToken:
+          type: string
+    Participant:
+      type: object
+      properties:
+        name:
+          type: string
+        earliestStartTime:
+          type: string
+          format: date-time
+        latestEndTime:
+          type: string
+          format: date-time
+    ListTranscriptEntriesResponse:
+      type: object
+      properties:
+        transcriptEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranscriptEntry'
+        nextPageToken:
+          type: string
+    ListParticipantsResponse:
+      type: object
+      properties:
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Participant'
+        nextPageToken:
+          type: string
+        totalSize:
+          type: integer
     ConferenceRecord:
       type: object
       properties:
@@ -268,34 +296,6 @@ components:
           format: date-time
         space:
           type: string
-    TranscriptEntry:
-      type: object
-      properties:
-        name:
-          type: string
-        participant:
-          type: string
-        text:
-          type: string
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        languageCode:
-          type: string
-    ListParticipantsResponse:
-      type: object
-      properties:
-        participants:
-          type: array
-          items:
-            $ref: '#/components/schemas/Participant'
-        nextPageToken:
-          type: string
-        totalSize:
-          type: integer
     ListRecordingsResponse:
       type: object
       properties:
