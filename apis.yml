@@ -61,8 +61,6 @@ apis:
     url: json-schema/json-schema.yml
   - type: JSONLD
     url: json-ld/json-ld.jsonld
-  - type: GraphQL
-    url: graphql/google-meet-graphql.md
 - aid: google-meet:google-meet-spaces-api
   name: Google Meet Spaces API
   description: The Spaces API from Google Meet — 1 operation(s) for spaces.
@@ -79,8 +77,6 @@ apis:
     url: json-schema/json-schema.yml
   - type: JSONLD
     url: json-ld/json-ld.jsonld
-  - type: GraphQL
-    url: graphql/google-meet-graphql.md
 - aid: google-meet:google-meet-conference-records-api
   name: Google Meet Conference Records API
   description: The Conference Records API from Google Meet — 7 operation(s) for conference records.
@@ -95,8 +91,6 @@ apis:
     url: json-schema/json-schema.yml
   - type: JSONLD
     url: json-ld/json-ld.jsonld
-  - type: GraphQL
-    url: graphql/google-meet-graphql.md
 common:
 - type: Website
   url: https://www.google.com/
