@@ -178,15 +178,6 @@ paths:
       - Conference Records
 components:
   schemas:
-    ListTranscriptsResponse:
-      type: object
-      properties:
-        transcripts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Transcript'
-        nextPageToken:
-          type: string
     TranscriptEntry:
       type: object
       properties:
@@ -204,6 +195,33 @@ components:
           format: date-time
         languageCode:
           type: string
+    ConferenceRecord:
+      type: object
+      properties:
+        name:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        expireTime:
+          type: string
+          format: date-time
+        space:
+          type: string
+    Participant:
+      type: object
+      properties:
+        name:
+          type: string
+        earliestStartTime:
+          type: string
+          format: date-time
+        latestEndTime:
+          type: string
+          format: date-time
     Recording:
       type: object
       properties:
@@ -222,6 +240,35 @@ components:
         endTime:
           type: string
           format: date-time
+    ListTranscriptsResponse:
+      type: object
+      properties:
+        transcripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transcript'
+        nextPageToken:
+          type: string
+    ListParticipantsResponse:
+      type: object
+      properties:
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Participant'
+        nextPageToken:
+          type: string
+        totalSize:
+          type: integer
+    ListConferenceRecordsResponse:
+      type: object
+      properties:
+        conferenceRecords:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConferenceRecord'
+        nextPageToken:
+          type: string
     Transcript:
       type: object
       properties:
@@ -240,62 +287,6 @@ components:
         endTime:
           type: string
           format: date-time
-    ListConferenceRecordsResponse:
-      type: object
-      properties:
-        conferenceRecords:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConferenceRecord'
-        nextPageToken:
-          type: string
-    Participant:
-      type: object
-      properties:
-        name:
-          type: string
-        earliestStartTime:
-          type: string
-          format: date-time
-        latestEndTime:
-          type: string
-          format: date-time
-    ListTranscriptEntriesResponse:
-      type: object
-      properties:
-        transcriptEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/TranscriptEntry'
-        nextPageToken:
-          type: string
-    ListParticipantsResponse:
-      type: object
-      properties:
-        participants:
-          type: array
-          items:
-            $ref: '#/components/schemas/Participant'
-        nextPageToken:
-          type: string
-        totalSize:
-          type: integer
-    ConferenceRecord:
-      type: object
-      properties:
-        name:
-          type: string
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        expireTime:
-          type: string
-          format: date-time
-        space:
-          type: string
     ListRecordingsResponse:
       type: object
       properties:
@@ -303,5 +294,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Recording'
+        nextPageToken:
+          type: string
+    ListTranscriptEntriesResponse:
+      type: object
+      properties:
+        transcriptEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranscriptEntry'
         nextPageToken:
           type: string
