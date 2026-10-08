@@ -94,6 +94,12 @@ apis:
   - type: JSONLD
     url: json-ld/json-ld.jsonld
 common:
+- type: Plans
+  url: plans/google-meet-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/google-meet-rate-limits.yml
+- type: FinOps
+  url: finops/google-meet-finops.yml
 - type: Website
   url: https://www.google.com/
 - type: AgenticAccess
