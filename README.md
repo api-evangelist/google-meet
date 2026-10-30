@@ -1,4 +1,4 @@
-# Google Meet (google-meet)
+# Google Meet
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,53 +66,139 @@
 
 The Google Meet API provides programmatic access to Google Meet video conferencing functionality. It enables applications to create and manage meeting spaces, retrieve conference records including participant details, access recordings and transcripts, and end active conferences. The API supports building integrations that automate meeting workflows and extract meeting data.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/google-meet/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/google-meet/refs/heads/main/apis.yml)
+**Areas:** Google · Google Workspace · Meetings · Recording · Transcripts · Video Conferencing
 
-## Tags
+## Google Meet on APIs.io
 
-- Google
-- Google Workspace
-- Meetings
-- Recordings
-- Transcripts
-- Video Conferencing
+Everything profiled for Google Meet is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/google-meet/](https://apis.io/providers/google-meet/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (3)
 
-- **Created:** 2026-03-13
-- **Modified:** 2026-05-19
+- [Google Meet Google Meet API](https://apis.io/apis/google-meet/google-meet-google-meet-api-api/) — The Google Meet API API from Google Meet — 2 operation(s) for google meet api.
+- [Google Meet Spaces API](https://apis.io/apis/google-meet/google-meet-spaces-api/) — The Spaces API from Google Meet — 1 operation(s) for spaces.
+- [Google Meet Conference Records API](https://apis.io/apis/google-meet/google-meet-conference-records-api/) — The Conference Records API from Google Meet — 7 operation(s) for conference records.
 
-## APIs
+### Published properties
 
-### Google Meet API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The Google Meet REST API enables creating and managing meeting spaces, retrieving conference records with participant and session data, accessing meeting recordings and transcripts, and controlling active conferences.
+#### GraphQL (1)
 
-- **Human URL:** [https://developers.google.com/workspace/meet/api/guides/overview](https://developers.google.com/workspace/meet/api/guides/overview)
-- **Base URL:** `https://meet.googleapis.com`
+GraphQL schemas.
 
-#### Tags
+- [Moved to /providers/google-meet/](https://apis.io/graphqls/google-meet/google-meet-graphql/)
 
-- Meetings
-- Recordings
-- Transcripts
-- Video Conferencing
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [OpenAPI](openapi/openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/json-schema.yml) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/json-ld.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Google Meet Agentic Access](https://apis.io/agentic-access/google-meet/google-meet-agentic-access/)
 
-## Common Properties
+#### JSON-LD (1)
 
-- [Getting Started](https://developers.google.com/workspace/meet/api/guides/overview)
+Linked-data contexts for the provider's vocabulary.
+
+- [Json Ld Context](https://apis.io/jsonld/google-meet/json-ld/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Google Meet conferenceRecords API](https://apis.io/collections/google-meet/open-google-meet-conferencerecords-api/)
+- [Google Meet conferenceRecords Google Meet API API](https://apis.io/collections/google-meet/open-google-meet-google-meet-api-api/)
+- [Google Meet conferenceRecords Spaces API](https://apis.io/collections/google-meet/open-google-meet-spaces-api/)
+- [Google Meet API](https://apis.io/collections/google-meet/open-openapi/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Google Meet — jsonschema rules](https://apis.io/rules/google-meet/google-meet-jsonschema-spectral-rules/)
+- [Google Meet API Rules](https://apis.io/rules/google-meet/google-meet-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Google Meet Domain Security](https://apis.io/security/google-meet/google-meet-domain-security/)
+- [Google Meet Vulnerability Disclosure](https://apis.io/security/google-meet/google-meet-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Google Meet Plans Pricing](https://apis.io/plans/google-meet/google-meet-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Google Meet Rate Limits](https://apis.io/rate-limits/google-meet/google-meet-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Google Meet Finops](https://apis.io/finops/google-meet/google-meet-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.google.com/)
+- [Getting started](https://developers.google.com/workspace/meet/api/guides/overview)
 - [Pricing](https://cloud.google.com/meet/pricing)
-- [JSON-LD](json-ld/json-ld.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Blog](https://workspaceupdates.googleblog.com/feeds/posts/default/-/Google%20Meet)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 26.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 52.4 |
+| Contract governance | 13.6 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 14.3 |
+| Access clarity | 7.9 |
+
+**Agent readiness 15.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/google-meet/](https://apis.io/providers/google-meet/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Google Meet: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/google-meet/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
